@@ -1,128 +1,298 @@
-# 沉浸式数字产品体验：爱马仕「尼罗河花园」数字化感官叙事
+# Immersive Product Experience
 
-本仓库是一个针对高级交互设计师、创意工程师及产品招聘官展示的**数字体验设计案例（Portfolio Case Study）**。 
+An immersive product experience inspired by Hermès’ *Un Jardin sur le Nil*, exploring how storytelling, interaction, motion, and product information can work together in a digital interface.
 
-在这里，香水本身并非项目，而是一个信息媒介。本项目旨在探索**如何将实体奢品的嗅觉特征、玻璃与液体的材质感、以及品牌的人文底蕴，转换为数字交互介质中的感官叙事**。项目展示了产品思维、交互体系、信息架构、数字动效以及极致前端工程的交融。
+本项目以 Hermès「Un Jardin sur le Nil / 尼罗河花园」为设计对象，尝试将实体产品的气味线索、材质感、品牌叙事与网页交互结合起来，形成一个兼具展示、浏览与信息探索的产品体验页面。
 
----
-
-## 💎 设计定位与核心命题 (Repository Strategy)
-
-在奢侈品牌（如爱马仕）的数字体验中，传统电商的“商品列表+硬编码翻转”会彻底破坏品牌的“高级感”与“叙事性”。
-
-本项目基于以下核心命题进行设计与工程实现：
-* **感官数字化译制 (Olfactory to Visual)**：通过三层 Multiply 叠色水彩消融与色彩剥离（Chromatic Aberration），将实体瓶身平滑消解为水彩墨迹；利用 SVG 路径百分比插值，实时模拟钢笔墨水绘制植物插画的“手作感”，呼应爱马仕对工艺（Metiers）的极致追求。
-* **呼吸感叙事滚轮 (Scrollytelling)**：摒弃了机械式的 3D 旋转与高频帧率抖动，通过滚轮物理视口对齐机制，让文字卡片与插画手稿以平缓、对称的黄金交叉曲线进行呼吸式演进。
-* **极致性能与无暇体验 (Performance & Reliability)**：通过消除不必要的 React 状态重绘及组件销毁，避免了动效回滚时的失焦模糊，在任意分辨率的现代浏览器中均能达到 60fps 级别的顺滑度。
+> This is an independent non-commercial design and front-end project.  
+> It is not affiliated with, endorsed by, or sponsored by Hermès.
 
 ---
 
-## 🎨 交互系统与核心实现 (Interaction Architecture)
+## Preview
 
-```mermaid
-graph TD
-    A[Window Scroll] -->|scrollYProgress| B(Scrollytelling Engine)
-    B -->|0.00 - 0.34| C[Perfume Bottle Dissolve]
-    B -->|0.30 - 0.66| D[Top Notes: Mangue Verte & Pamplemousse]
-    B -->|0.54 - 0.90| E[Heart Notes: Lotus du Nil & Roseau Calamus]
-    B -->|0.78 - 1.00| F[Base Notes: Encens Sacré & Bois de Sycomore]
-    C -->|Chromatic Aberration| C1[Orange Left / Blue Right Bit-shift]
-    C -->|Liquid Blur Out| C2[Blur Filter Interpolation 0px to 18px]
-    D -->|Ink Outline Draw| D1[SVG pathLength: 0 to 1]
-    D -->|Smudge Expansion| D2[Bloom Scale & Opacity Transition]
+> 建议在这里补充项目截图或部署链接。
+
+```text
+Live Demo: Coming soon
 ```
 
-### 1. 叠色水彩融合与色彩剥离 (Watercolor Bleed Dissolve)
-* **表现形式**：平展的瓶身逐渐消解。红色图层向左下移，蓝色图层向右上移，同时整机进行模糊与褪色，形成水彩湿画法中的色料扩散。
-* **工程实现**：
-  * 在中央 Sticky 画布中叠加三层瓶身 `img`，利用 CSS `mix-blend-mode: multiply` 模拟画纸上真实的颜料叠加效果。
-  * 利用 `useTransform` 将滚动进度映射至各图层的 X 轴位移量（`-28px` 至 `28px`）及高斯模糊滤镜（`blur(0px)` 至 `blur(18px)`）。
-
-### 2. 实时钢笔手稿绘制 (SVG Path Ink Write-In)
-* **表现形式**：芒果、睡莲、无花果木等 6 幅植物线稿随着滚轮的深入，如同有一支隐形的钢笔正在纸上勾勒素描线条一般自动延伸绘制。
-* **工程实现**：
-  * 将素描草图全部矢量化为 `<motion.path>`。
-  * 将 `pathLength` 属性直接绑定至局部的滚动进度。当线条绘制完毕时，底部的彩色水彩晕染块才开始向外扩张盛开。
-
-### 3. 物理中心滚动对齐 (Physical Crossover Alignment)
-* **表现形式**：当卡片在屏幕中达到最深、最可读的视觉中心时，对应的手绘插图和水彩墨迹必然处于最饱和、完全成型的黄金时段。
-* **工程实现**：
-  * 摒弃了主观的经验主义进度分配，根据 `500vh` 页面高度和视口比例，将 5 张叙事卡片在容器中的绝对垂直物理中点，计算为精确 of `scrollYProgress` 分度（`0.0`, `0.244`, `0.488`, `0.732`, `0.976`）。
-  * 交互卡片与插图组件的渐变透明度、缩放尺度均基于这些物理中点进行对称式的范围配对（例如中调卡片及中调线稿在 `0.732` 达到 100% 满状态渲染，而在 `0.61` 之前和 `0.85` 之后进行对称式消褪）。
-
-### 4. 滚轮回溯状态重置 (Scroll-Back Lifecycle Reset)
-* **表现形式**：用户多次在网站底端和顶端来回滑动时，动效没有任何残影、抖动或模糊，每次回滚至顶部时瓶身均能完美恢复水晶般的清晰度。
-* **工程实现**：
-  * 移除了会引起 React 状态高频更新的 `useState` 和卸载检测（`isBottleVisible`）。
-  * 用 CSS `visibility` 值的 Motion 映射（当进度 `> 0.35` 时为 `hidden`）替代 DOM 节点的硬销毁。保持组件树常驻，使得 Framer Motion 在逆向滚动时能够顺畅读取缓动状态并完成渲染重置。
+![Project Preview](public/images/hermes_perfume.jpg)
 
 ---
 
-## 📁 仓储架构设计 (Repository Architecture)
+## Project Overview
 
+`immersive-product-experience` 不是一个传统商品详情页，也不是单纯的视觉展示页。
+
+它围绕一个具体产品，尝试拆解并重组以下内容：
+
+- 产品第一印象
+- 品牌与场景叙事
+- 香调信息结构
+- 滚动过程中的视觉反馈
+- 展示页与详情页之间的浏览路径
+- 动效、图像与文案之间的对应关系
+
+项目希望呈现的是：  
+**一个产品如何从静态商品图，转化为一段可浏览、可感知、可继续探索的数字体验。**
+
+---
+
+## Design Direction
+
+Hermès「尼罗河花园」本身具有明确的感官线索：绿色芒果、葡萄柚、莲花、河流、木质与乳香。这些元素并不适合被简单压缩成普通商品卡片。
+
+因此，本项目没有直接采用“商品图 + 价格 + 购买按钮”的结构，而是将页面拆分为两个层级：
+
+```text
+Showcase
+用于建立产品气质、场景记忆 and 浏览兴趣。
+
+Detail
+用于补充香调、系列、规格和产品信息。
 ```
-├── public/                 # 静态多媒体资源 (爱马仕香水瓶、包装盒、原画背景)
+
+这种结构让页面既有第一眼的情绪表达，也保留进一步理解产品的空间。
+
+---
+
+## Experience Structure
+
+```text
+Immersive Product Experience
+├── Showcase
+│   ├── Concept
+│   ├── Genesis
+│   ├── Opening Notes
+│   ├── Heart Notes
+│   ├── Drydown
+│   └── Enter Detail
+│
+└── Detail
+    ├── Inspiration
+    ├── Scent Journey
+    ├── Product Collection
+    └── Footer
+```
+
+### Showcase
+
+Showcase 页面以滚动叙事为主。用户随着页面滚动，依次看到产品概念、调香灵感、前调、中调和后调。
+
+页面通过瓶身图像、水彩过渡、植物线稿和文字卡片之间的变化，营造一种由“产品外观”逐渐进入“气味想象”的过程。
+
+### Detail
+
+Detail 页面更接近产品信息页，用于承接 Showcase 之后的进一步浏览。
+
+它包含产品灵感、香调探索、系列产品和基础页面信息，使项目不止停留在单页视觉展示，而是具备更完整的产品浏览结构。
+
+---
+
+## Design Goals
+
+| Goal | Description |
+| --- | --- |
+| Build atmosphere first | 先建立产品气质与场景，再进入具体信息。 |
+| Make scent easier to understand | 将前调、中调、后调拆分为可浏览的信息层级。 |
+| Use motion as guidance | 让动效承担叙事节奏和视觉引导，而不是单纯装饰。 |
+| Balance emotion and clarity | 在感性表达和信息清晰度之间保持平衡。 |
+| Extend beyond a landing page | 通过 Detail 页面补充产品信息，使体验更完整。 |
+
+---
+
+## Key Interactions
+
+### 1. Scroll-based storytelling
+
+Showcase 页面使用滚动进度驱动内容切换。文字、图像和线稿不会一次性出现，而是随着用户滚动逐步展开。
+
+这种方式使香调变化具有时间感，也让用户在浏览过程中逐渐进入产品故事。
+
+### 2. Bottle dissolve effect
+
+瓶身图像在滚动过程中逐渐淡出，并伴随模糊、位移和色彩层次变化。
+
+这一效果不是为了模拟真实物理过程，而是为了表达从“实体瓶身”到“气味印象”的视觉转场。
+
+### 3. Botanical line drawing
+
+页面中的植物线稿会随着滚动逐步绘制，用来对应不同香调中的植物元素。
+
+线稿和水彩感视觉共同构成一种轻量的手稿感，呼应香水灵感来源中的自然意象。
+
+### 4. Scent journey interaction
+
+Detail 页面中的香调模块将 Top Notes、Heart Notes 和 Base Notes 拆分为可切换内容。
+
+用户可以在不同香调之间切换，查看对应香材、描述和视觉元素，从而更清楚地理解产品结构。
+
+---
+
+## Information Architecture
+
+项目的信息结构主要围绕两个问题展开：
+
+1. 用户如何被产品吸引？
+2. 用户被吸引后，如何继续理解产品？
+
+因此，页面没有把所有信息堆叠在同一屏，而是通过 Showcase 与 Detail 进行分层。
+
+```text
+First impression
+→ Story and atmosphere
+→ Scent structure
+→ Product details
+→ Collection information
+```
+
+这种结构可以避免页面过早进入商品参数，也能避免只有视觉展示但缺少信息深度。
+
+---
+
+## Visual and Motion Principles
+
+### 1. Restraint
+
+页面整体避免使用过多高强度动效。动效主要出现在滚动、转场、线稿绘制和内容显隐中。
+
+### 2. Continuity
+
+Showcase 和 Detail 使用一致的色调、图像风格和排版节奏，让用户从叙事页面进入详情页面时不会产生割裂感。
+
+### 3. Product-led expression
+
+视觉元素尽量从产品本身出发，例如瓶身、河流、植物、香调和材质，而不是额外添加与产品无关的装饰元素。
+
+### 4. Readability
+
+即使页面具有较强的视觉氛围，文字仍然需要保持可读，信息层级需要清楚。
+
+---
+
+## Tech Stack
+
+| Area | Technology |
+| --- | --- |
+| Framework | React |
+| Language | TypeScript |
+| Build Tool | Vite |
+| Styling | Tailwind CSS / CSS Variables |
+| Motion | Framer Motion |
+| 3D Experiment | Three.js |
+| Icons | Lucide React |
+| Linting | Oxlint |
+
+---
+
+## Project Structure
+
+```text
+immersive-product-experience
+├── public/
 │   ├── images/
-│   └── favicon.svg
+│   │   ├── hermes_perfume.jpg
+│   │   ├── jardin_bottle_box.png
+│   │   ├── jardin_bottle_front.png
+│   │   ├── jardin_bottle_nobg.png
+│   │   ├── jardin_collection.jpg
+│   │   ├── jardin_dry_oil.png
+│   │   └── jardin_ingredients.png
+│   ├── favicon.svg
+│   └── icons.svg
+│
 ├── src/
-│   ├── assets/             # 全局静态图标与基础矢量文件
-│   ├── components/         # 模块化高阶组件
-│   │   ├── Header.tsx      # 爱马仕巴黎品牌页眉导航
-│   │   ├── HeroSection.tsx # 故事引入首屏 (The Inspiration)
-│   │   ├── ShowcasePage.tsx# 滚轮感官叙事主看板 (Scent Journey)
-│   │   ├── ScentJourney.tsx# 互动香调探秘 (The Collection)
-│   │   ├── ThreeBottle.tsx # 详情页三维光影瓶身 (Interactive Liquid)
-│   │   └── Footer.tsx      # 页脚及版权
-│   ├── App.tsx             # 状态分发与 AnimatePresence 路由分轨
-│   ├── index.css           # 包含全站暖沙色 (Linen Cream) 设计系统的 CSS 变量
+│   ├── assets/
+│   ├── components/
+│   │   ├── Footer.tsx
+│   │   ├── Header.tsx
+│   │   ├── HeroSection.tsx
+│   │   ├── ProductGrid.tsx
+│   │   ├── ScentJourney.tsx
+│   │   ├── ShowcasePage.tsx
+│   │   └── ThreeBottle.tsx
+│   ├── App.css
+│   ├── App.tsx
+│   ├── index.css
 │   └── main.tsx
+│
+├── index.html
 ├── package.json
 ├── tsconfig.json
+├── tsconfig.app.json
+├── tsconfig.node.json
 └── vite.config.ts
 ```
 
 ---
 
-## 📝 核心文案与译制验证 (Editorial Copy)
+## Local Development
 
-为了保障作品集的专业性，本项目的文案根据爱马仕（Hermès）官方品牌故事 and 香水调性进行了深度汉化译制：
-* **前调 (Top Notes)**：青芒果（Green Mango）、葡萄柚（Grapefruit）、西红柿叶（Tomato Leaf）。展现尼罗河畔清晨初醒时分，带有微涩与水生青绿的柑橘调开端。
-* **中调 (Heart Notes)**：尼罗河睡莲（Nile Lotus）、菖蒲（Calamus Reeds）、橙子（Orange）。睡莲是埃及重生的花卉象征，菖蒲则赋予了河风抚面般的温柔绿意。
-* **后调 (Base Notes)**：埃及塘木（Sycamore Wood）、乳香（Incense）。
-  * > [!NOTE]  
-    > 许多香水译本将 *Sycamore Wood* 翻译为“枫木”，在学术上这是不准确的（枫木为 Maple）。在此我们将其校正为**埃及塘木**（即埃及榕/埃及无花果木，Ficus sycomorus），该木质香气与带有温润树脂质感的乳香收尾，真实还原了尼罗河沿岸干燥微温的细沙质感。
+### Install dependencies
 
----
-
-## 🛠️ 本地开发与部署验证 (Local Development)
-
-### 1. 安装依赖
 ```bash
 npm install
 ```
 
-### 2. 启动本地开发服务
+### Start development server
+
 ```bash
 npm run dev
 ```
-本地服务器将在 [http://localhost:5173/](http://localhost:5173/) 启动。
 
-### 3. 构建生产环境产物
+### Build for production
+
 ```bash
 npm run build
 ```
-编译系统由 `TypeScript` 进行类型严检，并通过 `Vite` 打包，生成极致压缩的单页静态文件包（`dist/`），保障高响应度和极致的首屏加载性能。
+
+### Preview production build
+
+```bash
+npm run preview
+```
+
+### Run lint
+
+```bash
+npm run lint
+```
 
 ---
 
-## 🔮 未来规划与拓展方向 (Future Roadmap)
+## Current Status
 
-* [ ] **触觉反馈 (Haptic Scrolling)**：在支持触觉的设备上（如 MacBook Trackpad 或 iPhone Safari 浏览器）提供阻尼微颤反馈，当钢笔线条绘制完毕、水彩晕开的瞬间，向用户传递微震感。
-* [ ] **动态音频叙事 (Ambient Audio Integration)**：加入平缓的背景环境音（流水声、微风声），其音量与混响深度随用户滚动进度进行平滑插值，从数字视觉拓展到数字听觉。
-* [ ] **极致无障碍适配 (Web Accessibility / WCAG 2.1)**：为动效路径与手绘图标添加完整的 ARIA 视障辅助说明，提供一键“减少动效 (Prefers-Reduced-Motion)”的奢华无障碍模式。
+The current version includes:
+
+- Scroll-based showcase page
+- Product detail page
+- Header navigation
+- Scent journey interaction
+- Product collection cards
+- Motion-based visual transitions
+- Responsive navigation foundation
+- Experimental Three.js bottle component
+
+The Three.js bottle component is currently an experimental module and is not treated as the core experience of the current version.
 
 ---
 
-## ⚖️ 开源协议 (License)
+## Future Improvements
 
-本项目代码部分基于 **MIT License** 开源。项目中所涉及的爱马仕（Hermès）品牌标志、瓶身原画设计、包装盒图像及相关商标所有权均归爱马仕（Hermès Paris）官方所有，本项目仅用作非商用的学术交流与个人作品集展示。
+- Add a live demo link after deployment
+- Add screenshots and short interaction recordings
+- Improve mobile layout and breakpoint details
+- Add `prefers-reduced-motion` support
+- Refine accessibility labels for motion and image-heavy sections
+- Continue improving the Detail page information structure
+- Evaluate whether the experimental 3D bottle component should be integrated into the main experience
+- Add a separate design notes document for process, iteration, and trade-offs
+
+---
+
+## Notes on Content and Assets
+
+This project references Hermès「Un Jardin sur le Nil」as a design subject. Product names, trademarks, fragrance information, images, and related brand assets belong to their respective owners.
+
+The project is created for non-commercial learning, design exploration, and front-end practice only.
