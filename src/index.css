@@ -1,0 +1,65 @@
+@import url('https://fonts.googleapis.com/css2?family=Instrument+Serif:ital,wght@0,400;1,400&family=Manrope:wght@300;400;500;600;700&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-serif: "Instrument Serif", serif;
+  --font-sans: "Manrope", sans-serif;
+
+  --color-hermes-orange: #F37021;
+  --color-hermes-olive: #3d4a3e;
+  --color-hermes-sage: #8A9A86;
+  --color-hermes-cream: #FAF9F6;
+  --color-hermes-sand: #EAE6DF;
+  --color-hermes-charcoal: #1C2321;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: var(--color-hermes-cream);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--color-hermes-sage);
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-hermes-olive);
+}
+
+/* Smooth HTML scrolling */
+html {
+  scroll-behavior: smooth;
+  background-color: #FAF9F6; /* hermes-cream default */
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  color: #1C2321; /* hermes-charcoal */
+  font-family: "Manrope", sans-serif;
+  overflow-x: hidden;
+}
+
+/* Liquid Glassmorphism Class */
+.liquid-glass {
+  background: rgba(255, 255, 255, 0.45);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  box-shadow: 0 8px 32px 0 rgba(138, 154, 134, 0.1);
+}
+
+/* Custom fade animations */
+.fade-in {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+.fade-in.active {
+  opacity: 1;
+  transform: translateY(0);
+}
