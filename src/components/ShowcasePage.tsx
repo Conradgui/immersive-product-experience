@@ -100,10 +100,10 @@ export default function ShowcasePage({ onNavToDetail }: ShowcasePageProps) {
           >
             <span className="font-sans text-[10px] font-bold text-hermes-orange tracking-[0.25em] mb-2 uppercase">01 / CONCEPT</span>
             <h2 className="font-serif font-light text-4xl md:text-5xl text-hermes-charcoal tracking-wide mb-6 leading-tight">
-              An impressionistic <br />stroll of <span className="italic text-hermes-olive">water</span>
+              An impressionistic <br />stroll beside a <span className="italic text-hermes-olive">river</span>
             </h2>
             <p className="text-hermes-charcoal/65 font-sans text-sm font-light leading-relaxed max-w-sm">
-              Un Jardin sur le Nil is a sensory journey along the floating garden islands of Aswan. Inspired by light, nature, and the cycle of water, it offers an unusual definition of freshness.
+              Un Jardin sur le Nil is a sensory stroll beside a river, inspired by the light and nature of Aswan, and the eternal cycle of water. It offers an unusual definition of freshness.
             </p>
           </motion.div>
 
@@ -126,12 +126,12 @@ export default function ShowcasePage({ onNavToDetail }: ShowcasePageProps) {
             style={{ opacity: card3Opacity }}
             className="h-screen flex flex-col justify-center"
           >
-            <span className="font-sans text-[10px] font-bold text-hermes-orange tracking-[0.25em] mb-2 uppercase">03 / THE OPENING</span>
+            <span className="font-sans text-[10px] font-bold text-hermes-orange tracking-[0.25em] mb-2 uppercase">03 / JOURNEY I : GREEN & TART</span>
             <h2 className="font-serif font-light text-4xl md:text-5xl text-hermes-charcoal tracking-wide mb-6 leading-tight">
               Zesty & <br /><span className="italic text-hermes-olive">vegetal citrus</span>
             </h2>
             <p className="text-hermes-charcoal/65 font-sans text-sm font-light leading-relaxed max-w-sm">
-              At the first breath, a tart burst of green mango mixes with grapefruit and tomato leaves. Together they evoke the crisp, botanic atmosphere of an Egyptian morning.
+              At the first breath, an intense green freshness of green mango mixes with grapefruit. A snippet of tomato stem adds a crisp, botanical note to the morning river walk.
             </p>
           </motion.div>
 
@@ -140,12 +140,12 @@ export default function ShowcasePage({ onNavToDetail }: ShowcasePageProps) {
             style={{ opacity: card4Opacity }}
             className="h-screen flex flex-col justify-center"
           >
-            <span className="font-sans text-[10px] font-bold text-hermes-orange tracking-[0.25em] mb-2 uppercase">04 / THE HEART</span>
+            <span className="font-sans text-[10px] font-bold text-hermes-orange tracking-[0.25em] mb-2 uppercase">04 / JOURNEY II : AQUATIC & FLORAL</span>
             <h2 className="font-serif font-light text-4xl md:text-5xl text-hermes-charcoal tracking-wide mb-6 leading-tight">
-              Sleeping <br /><span className="italic text-hermes-olive">Nile Lotus</span>
+              Watery & <br /><span className="italic text-hermes-olive">floral lotus</span>
             </h2>
             <p className="text-hermes-charcoal/65 font-sans text-sm font-light leading-relaxed max-w-sm">
-              The water lotus—a sacred floral symbol of rebirth—blooms at the core. Its aquatic floral sweetness merges with calamus reeds and sweet orange to mirror quiet water currents.
+              The Nile Lotus—sacred flower of the pharaohs—blooms at the core. Its aquatic floral sweetness merges with calamus to evoke a quiet stroll beside the water.
             </p>
           </motion.div>
 
@@ -154,12 +154,12 @@ export default function ShowcasePage({ onNavToDetail }: ShowcasePageProps) {
             style={{ opacity: card5Opacity }}
             className="h-screen flex flex-col justify-center"
           >
-            <span className="font-sans text-[10px] font-bold text-hermes-orange tracking-[0.25em] mb-2 uppercase">05 / THE DRYDOWN</span>
+            <span className="font-sans text-[10px] font-bold text-hermes-orange tracking-[0.25em] mb-2 uppercase">05 / JOURNEY III : WOODY & MINERAL</span>
             <h2 className="font-serif font-light text-4xl md:text-5xl text-hermes-charcoal tracking-wide mb-6 leading-tight">
-              Sycamore & <br /><span className="italic text-hermes-olive">warm incense</span>
+              Sycamore & <br /><span className="italic text-hermes-olive">mineral incense</span>
             </h2>
             <p className="text-hermes-charcoal/65 font-sans text-sm font-light leading-relaxed max-w-sm">
-              The fragrance finishes with dry sycamore wood and a touch of warm, mineral incense. Powdery iris and musk add an elegant, sophisticated texture resembling clean river sand.
+              The fragrance settles into the breath of sycamores and the mineral vibration of cool incense smoke. A soft, powdery and musky texture lingers like sun-warmed sand.
             </p>
           </motion.div>
 
@@ -346,7 +346,7 @@ export default function ShowcasePage({ onNavToDetail }: ShowcasePageProps) {
                     <motion.path d="M35,68 C28,58 22,53 15,48" pathLength={heartNotesPathLength} />
                   </svg>
                   <span className="font-serif italic text-[11px] text-hermes-olive/70 mt-1 font-medium tracking-wide">
-                    Roseau Calamus
+                    Calamus
                   </span>
                 </div>
               </motion.div>
@@ -372,7 +372,7 @@ export default function ShowcasePage({ onNavToDetail }: ShowcasePageProps) {
                     <motion.path d="M60,82 C64,72 57,62 64,52 C72,39 56,27 62,15" pathLength={baseNotesPathLength} />
                   </svg>
                   <span className="font-serif italic text-[11px] text-hermes-charcoal/60 mt-1 font-medium tracking-wide">
-                    Encens Sacré
+                    Encens
                   </span>
                 </div>
 
@@ -447,19 +447,15 @@ export default function ShowcasePage({ onNavToDetail }: ShowcasePageProps) {
             style={{ opacity: card3Opacity }}
             className="h-screen flex flex-col justify-center"
           >
-            <span className="font-sans text-[11px] font-bold text-hermes-orange tracking-[0.25em] mb-4 uppercase">COMPOSITION / TOP</span>
+            <span className="font-sans text-[11px] font-bold text-hermes-orange tracking-[0.25em] mb-4 uppercase">OLFACTORY JOURNEY / I</span>
             <div className="border-l-2 border-hermes-orange/30 pl-5 space-y-6">
               <div className="space-y-1">
                 <h4 className="font-sans text-[14px] font-bold text-hermes-charcoal tracking-widest uppercase">Green Mango // 青芒果</h4>
-                <p className="text-[13.5px] text-hermes-charcoal/60 leading-relaxed font-light font-sans">Tangy, zesty, fresh-cut green botanical fruit aroma.</p>
+                <p className="text-[13.5px] text-hermes-charcoal/60 leading-relaxed font-light font-sans">An intense green freshness, blending tender shoots and a snippet of tomato stem with a carrot nuance.</p>
               </div>
               <div className="space-y-1">
                 <h4 className="font-sans text-[14px] font-bold text-hermes-charcoal tracking-widest uppercase">Grapefruit // 葡萄柚</h4>
-                <p className="text-[13.5px] text-hermes-charcoal/60 leading-relaxed font-light font-sans">Sparkling, refreshing, and bitter-sweet citrus opening.</p>
-              </div>
-              <div className="space-y-1">
-                <h4 className="font-sans text-[14px] font-bold text-hermes-charcoal tracking-widest uppercase">Tomato Leaf // 西红柿叶</h4>
-                <p className="text-[13.5px] text-hermes-charcoal/60 leading-relaxed font-light font-sans">Earthy, green garden nuances with high freshness.</p>
+                <p className="text-[13.5px] text-hermes-charcoal/60 leading-relaxed font-light font-sans">A zesty, sparkling note that heightens the mango with sharp effervescence and soft bitterness.</p>
               </div>
             </div>
           </motion.div>
@@ -469,19 +465,15 @@ export default function ShowcasePage({ onNavToDetail }: ShowcasePageProps) {
             style={{ opacity: card4Opacity }}
             className="h-screen flex flex-col justify-center"
           >
-            <span className="font-sans text-[11px] font-bold text-hermes-orange tracking-[0.25em] mb-4 uppercase">COMPOSITION / HEART</span>
+            <span className="font-sans text-[11px] font-bold text-hermes-orange tracking-[0.25em] mb-4 uppercase">OLFACTORY JOURNEY / II</span>
             <div className="border-l-2 border-hermes-orange/30 pl-5 space-y-6">
               <div className="space-y-1">
-                <h4 className="font-sans text-[14px] font-bold text-hermes-charcoal tracking-widest uppercase">Nile Lotus // 睡莲</h4>
-                <p className="text-[13.5px] text-hermes-charcoal/60 leading-relaxed font-light font-sans">Aquatic floral note, calm water lilies with sweet undertones.</p>
+                <h4 className="font-sans text-[14px] font-bold text-hermes-charcoal tracking-widest uppercase">Lotus // 莲花</h4>
+                <p className="text-[13.5px] text-hermes-charcoal/60 leading-relaxed font-light font-sans">A delicate, watery floral sweetness somewhere between peony and hyacinth, tinged with a subtle pink.</p>
               </div>
               <div className="space-y-1">
-                <h4 className="font-sans text-[14px] font-bold text-hermes-charcoal tracking-widest uppercase">Calamus & Reeds // 菖蒲</h4>
-                <p className="text-[13.5px] text-hermes-charcoal/60 leading-relaxed font-light font-sans">Sweet flag reeds, mimicking clean green river breezes.</p>
-              </div>
-              <div className="space-y-1">
-                <h4 className="font-sans text-[14px] font-bold text-hermes-charcoal tracking-widest uppercase">Orange // 橙子</h4>
-                <p className="text-[13.5px] text-hermes-charcoal/60 leading-relaxed font-light font-sans">Sunny, juicy orange accent adding warmth to the heart.</p>
+                <h4 className="font-sans text-[14px] font-bold text-hermes-charcoal tracking-widest uppercase">Calamus // 菖蒲</h4>
+                <p className="text-[13.5px] text-hermes-charcoal/60 leading-relaxed font-light font-sans">A fragrant rush that adds a grassy greenness of wet stalks and clean river breezes.</p>
               </div>
             </div>
           </motion.div>
@@ -491,15 +483,15 @@ export default function ShowcasePage({ onNavToDetail }: ShowcasePageProps) {
             style={{ opacity: card5Opacity }}
             className="h-screen flex flex-col justify-center"
           >
-            <span className="font-sans text-[11px] font-bold text-hermes-orange tracking-[0.25em] mb-4 uppercase">COMPOSITION / BASE</span>
+            <span className="font-sans text-[11px] font-bold text-hermes-orange tracking-[0.25em] mb-4 uppercase">OLFACTORY JOURNEY / III</span>
             <div className="border-l-2 border-hermes-orange/30 pl-5 space-y-6 mb-7">
               <div className="space-y-1">
-                <h4 className="font-sans text-[14px] font-bold text-hermes-charcoal tracking-widest uppercase">Sycamore Wood // 埃及塘木</h4>
-                <p className="text-[13.5px] text-hermes-charcoal/60 leading-relaxed font-light font-sans">Dry, noble, and refined elegant woody backbone.</p>
+                <h4 className="font-sans text-[14px] font-bold text-hermes-charcoal tracking-widest uppercase">Sycamore Wood // 槭木</h4>
+                <p className="text-[13.5px] text-hermes-charcoal/60 leading-relaxed font-light font-sans">The woody breath of tall, caressing trees, providing a dry and sheltering backdrop.</p>
               </div>
               <div className="space-y-1">
-                <h4 className="font-sans text-[14px] font-bold text-hermes-charcoal tracking-widest uppercase">Incense // 乳香</h4>
-                <p className="text-[13.5px] text-hermes-charcoal/60 leading-relaxed font-light font-sans">Subtle mystical warm resins and dry mineral wood smoke.</p>
+                <h4 className="font-sans text-[14px] font-bold text-hermes-charcoal tracking-widest uppercase">Incense // 焚香</h4>
+                <p className="text-[13.5px] text-hermes-charcoal/60 leading-relaxed font-light font-sans">A cool fire of incense smoke with a soft, powdery and musky texture resembling the mineral vibration of wet stones.</p>
               </div>
             </div>
 

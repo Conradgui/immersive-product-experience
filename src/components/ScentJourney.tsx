@@ -13,29 +13,29 @@ interface ScentNote {
 const scentNotes: ScentNote[] = [
   {
     id: 'top',
-    title: 'Top Note (前调)',
+    title: 'Olfactory Journey / I',
     subTitle: 'Green Mango & Grapefruit',
-    chineseTitle: '青芒果、葡萄柚、西红柿茎、胡萝卜籽',
-    ingredients: ['Green Mango', 'Grapefruit', 'Tomato Leaf', 'Carrot Seed'],
-    description: 'A sharp, sparkling burst of green fruits. The opening is a fresh, tangy stroll along the banks of the Nile, where the vegetal scent of green mango is rounded out by zesty grapefruit and tomato leaf.',
+    chineseTitle: '青芒果、葡萄柚 (伴随番茄茎与胡萝卜清香)',
+    ingredients: ['Green Mango', 'Grapefruit'],
+    description: 'An intense, mouth-watering freshness. The stroll opens with the green, tart botanical pulp of green mango, heightened by the sharp effervescence and soft bitterness of grapefruit, completed by a snippet of tomato stem.',
     highlightClass: 'top-0 h-1/3'
   },
   {
     id: 'heart',
-    title: 'Heart Note (中调)',
-    subTitle: 'Nile Lotus & Calamus',
-    chineseTitle: '埃及睡莲、尼罗河菖蒲、橙子、牡丹',
-    ingredients: ['Nile Lotus', 'Calamus (Rush)', 'Orange', 'Peony'],
-    description: 'The core of the fragrance. Translucent and aquatic, the Nile Lotus brings a delicate, watery sweetness that floats elegantly alongside calamus and hyacinth, evoking a garden blooming in the morning sun.',
+    title: 'Olfactory Journey / II',
+    subTitle: 'Lotus & Calamus',
+    chineseTitle: '尼罗河莲花、菖蒲',
+    ingredients: ['Lotus', 'Calamus'],
+    description: 'The translucent core of the river journey. Watery and delicate, the lotus brings a soft floral sweetness (reminiscent of peony and hyacinth) that flows quietly alongside the grassy greenness of calamus reeds.',
     highlightClass: 'top-1/3 h-1/3'
   },
   {
     id: 'base',
-    title: 'Base Note (后调)',
+    title: 'Olfactory Journey / III',
     subTitle: 'Sycamore Wood & Incense',
-    chineseTitle: '梧桐木、乳香、鸢尾花、肉桂',
-    ingredients: ['Sycamore Wood', 'Incense', 'Iris', 'Musk'],
-    description: 'A rich, grounded finish. Elegantly complex, the dry-down settles into sycamore wood and warm incense, with powdery iris and musk creating a sophisticated, lingering shadow of wood and sand.',
+    chineseTitle: '槭木、焚香',
+    ingredients: ['Sycamore Wood', 'Incense'],
+    description: 'A quiet, mineral dry-down. The fragrance settles into the dry woody breath of sycamores and the mineral vibration of cool incense smoke, leaving a soft, powdery and musky texture on the skin like river sand.',
     highlightClass: 'bottom-0 h-1/3'
   }
 ];
