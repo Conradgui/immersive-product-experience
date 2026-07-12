@@ -41,7 +41,7 @@ Live Demo: Coming soon
 
 ## Design Direction
 
-Hermès「尼罗河花园」本身具有明确的感官线索：绿色芒果、葡萄柚、莲花、河流、木质与乳香。这些元素并不适合被简单压缩成普通商品卡片。
+Hermès「尼罗河花园」本身具有明确的感官线索：青芒果（Green Mango）、葡萄柚（Grapefruit）、尼罗河莲花（Lotus）、菖蒲（Calamus）、槭木（Sycamore Wood）与焚香（Incense），以及番茄茎（Tomato Stem）与胡萝卜（Carrot）等次级香气线索。这些元素并不适合被简单压缩成普通商品卡片。
 
 因此，本项目没有直接采用“商品图 + 价格 + 购买按钮”的结构，而是将页面拆分为两个层级：
 
