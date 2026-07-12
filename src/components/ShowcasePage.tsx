@@ -451,11 +451,19 @@ export default function ShowcasePage({ onNavToDetail }: ShowcasePageProps) {
             <div className="border-l-2 border-hermes-orange/30 pl-5 space-y-6">
               <div className="space-y-1">
                 <h4 className="font-sans text-[14px] font-bold text-hermes-charcoal tracking-widest uppercase">Green Mango // 青芒果</h4>
-                <p className="text-[13.5px] text-hermes-charcoal/60 leading-relaxed font-light font-sans">An intense green freshness, blending tender shoots and a snippet of tomato stem with a carrot nuance.</p>
+                <p className="text-[13.5px] text-hermes-charcoal/60 leading-relaxed font-light font-sans">An intense green freshness, blending tender shoots and fruity pulp.</p>
               </div>
               <div className="space-y-1">
                 <h4 className="font-sans text-[14px] font-bold text-hermes-charcoal tracking-widest uppercase">Grapefruit // 葡萄柚</h4>
                 <p className="text-[13.5px] text-hermes-charcoal/60 leading-relaxed font-light font-sans">A zesty, sparkling note that heightens the mango with sharp effervescence and soft bitterness.</p>
+              </div>
+              <div className="space-y-1 opacity-60">
+                <h4 className="font-sans text-[12px] font-medium text-hermes-charcoal/80 tracking-widest uppercase">Tomato Stem // 番茄茎 (植物感)</h4>
+                <p className="text-[12.5px] text-hermes-charcoal/50 leading-relaxed font-light font-sans">A snippet of green tomato stem adding a crisp, raw vegetal note.</p>
+              </div>
+              <div className="space-y-1 opacity-60">
+                <h4 className="font-sans text-[12px] font-medium text-hermes-charcoal/80 tracking-widest uppercase">Carrot // 胡萝卜 (辅助气味)</h4>
+                <p className="text-[12.5px] text-hermes-charcoal/50 leading-relaxed font-light font-sans">A crisp, root-like nuance blending into the green mango accord.</p>
               </div>
             </div>
           </motion.div>
@@ -475,6 +483,10 @@ export default function ShowcasePage({ onNavToDetail }: ShowcasePageProps) {
                 <h4 className="font-sans text-[14px] font-bold text-hermes-charcoal tracking-widest uppercase">Calamus // 菖蒲</h4>
                 <p className="text-[13.5px] text-hermes-charcoal/60 leading-relaxed font-light font-sans">A fragrant rush that adds a grassy greenness of wet stalks and clean river breezes.</p>
               </div>
+              <div className="space-y-1 opacity-60">
+                <h4 className="font-sans text-[12px] font-medium text-hermes-charcoal/80 tracking-widest uppercase">Bitter Orange // 苦橙 (辅助气味)</h4>
+                <p className="text-[12.5px] text-hermes-charcoal/50 leading-relaxed font-light font-sans">A subtle bitter citrus tone supporting the brightness of the lotus.</p>
+              </div>
             </div>
           </motion.div>
 
@@ -491,7 +503,11 @@ export default function ShowcasePage({ onNavToDetail }: ShowcasePageProps) {
               </div>
               <div className="space-y-1">
                 <h4 className="font-sans text-[14px] font-bold text-hermes-charcoal tracking-widest uppercase">Incense // 焚香</h4>
-                <p className="text-[13.5px] text-hermes-charcoal/60 leading-relaxed font-light font-sans">A cool fire of incense smoke with a soft, powdery and musky texture resembling the mineral vibration of wet stones.</p>
+                <p className="text-[13.5px] text-hermes-charcoal/60 leading-relaxed font-light font-sans">A cool fire of incense smoke, reminiscent of the mineral vibration of wet stones.</p>
+              </div>
+              <div className="space-y-1 opacity-60">
+                <h4 className="font-sans text-[12px] font-medium text-hermes-charcoal/80 tracking-widest uppercase">Iris & Musk // 鸢尾与麝香 (感知质感)</h4>
+                <p className="text-[12.5px] text-hermes-charcoal/50 leading-relaxed font-light font-sans">A soft, powdery and musky texture settling like dry river sand.</p>
               </div>
             </div>
 
